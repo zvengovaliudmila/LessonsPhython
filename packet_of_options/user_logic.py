@@ -40,7 +40,17 @@ def change_of_department_for_people():
           "people_of_departments":people_id
         })
 
+def quit_of_people_of_departments():
+    quit_id = int(input("Введите id увольняемого сотрудника: "))
+    people_id = [p for p in people_of_departments if p["id"] == quit_id][0]
+    people_of_departments.remove(people_id)
 
+def the_end():
+    choice = input("Выйти из списка: да или нет ? ")
+    if choice == "нет":
+       return options_choiсe
+    else:
+        exit()
 
 OPTIONS = {
            1: ['Вывести список отделов',show_departments],                #cсылка на функцию
@@ -49,8 +59,8 @@ OPTIONS = {
            4: ['Добавить отдел',add_department],
            5: ['Добавить сотрудника',ad_people_of_departments],
            6: ['Поместить сотрудника в другой отдел',change_of_department_for_people],
-           7: ['Уволить сотрудника',lambda: ["todo"]],
-           8: ['Выход', lambda: None]
+           7: ['Уволить сотрудника',quit_of_people_of_departments],
+           8: ['Выход',the_end]
 }
 
 def options_choiсe():
